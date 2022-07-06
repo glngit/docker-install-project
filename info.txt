@@ -1,0 +1,2 @@
+After docker installation, In securitry groups, Allow -- AllTrafic Anywhere
+--> Then webpage will load
