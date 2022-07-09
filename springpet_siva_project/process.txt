@@ -1,0 +1,27 @@
+Process:
+----------
+--> docker pull ubuntu:16.04
+--> docker run -dit --name ubuntucontainer ubuntu:16.04
+--> go into container,     apt update -y
+--> apt install iputils-ping wget net-tools curl -y
+--> copy springpetclinic.jar  to /root/
+--> docker container cp sprinpetclinic.jar <containerid>:/             ########## copying into container
+--> apt update -y
+--> apt install openjdk-8-jdk   ####### openjdk-11-jdk (check it first)
+--> go out of container,    docker container commit <cntainerid> <new_image_name>     ############# ubuntu:springpet
+--> docker run -dit -p 8080:8080 --name apringcontainer ubuntu:springpet
+--> docker exec -it <containerid> /bin/bash
+-->    java -jar springpetclinic.jar             ###### application starts, go to website vmip:8080, application loads......
+
+
+
+
+springpetclinic.jar: creation,
+------------------------------
+go to instance,
+--> sudo apt update -y
+--> sudo install openjdk-11-jdk
+--> git clone https://github.com/spring-projects/spring-petclinic.git
+--> cd spring-petclinic
+--> ./mvnw package
+--> java -jar target/*.jar      ###### .jar file created    ###### for checking the applicatiuon
